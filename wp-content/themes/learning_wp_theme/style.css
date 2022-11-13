@@ -1,0 +1,267 @@
+/*
+Theme Name: Tema Aprendiendo wordpress
+Text Domain: learning_wp_theme
+Version: 1.0
+Description: Es un tema que voy a ir construyendo poco a poco para ir aprendiendo las bases de wordpress
+Author: Jose Antonio Jimenez Berrocal
+Author URI: https://github.com/JoseAntonioJJ
+Theme URI: https://github.com/JoseAntonioJJ/aprendiendowptema
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+All files, unless otherwise stated, are released under the GNU General Public
+License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned
+with others.
+*/
+
+:root{
+    /** Fuentes **/
+    --fuentePrincipal : 'Staatliches', cursive;
+    --fuenteTexto : 'Open Sans', sans-serif;
+    --fuenteSecundaria : 'Raleway', sans-serif;
+    /** Colores **/
+    --colorPrimario : #2733A0;
+    --colorSecundario : #353b48;
+    --colorTerciario : #ffc107;
+    --colorCuartenario : #222529;
+    --colorQuintario : #ced4da;
+    --colorSextario : #808080;
+
+}
+
+
+/* apply a natural box layout model to all elements, but allowing components to change 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ 
+*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* Now 10px = 1rem! from https://gist.github.com/mrwweb/5627502*/
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  body {
+    font-size: 16px; /* px fallback */
+    font-size: 1.6rem; /* default font-size for document */
+    line-height: 2; /* a nice line-height */
+    font-family: var(--fuenteSecundaria);
+  }
+
+  .imagen-destacada {
+    padding-bottom: 3rem;
+  }
+  
+/* encabezados */
+h1, h2, h3, h4 {
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+    line-height: 1.2;
+    
+}
+h1 {
+    font-size: 6rem;
+}
+h2 {
+    font-size: 4.8rem;
+}
+h3 {
+    font-size: 3.6rem;
+}
+h4 {
+    font-size: 2.4rem;
+}
+/* Globales */
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+hr {
+    border: solid 1px var(--colorCuartenario);
+}
+/* Utilidades*/
+.text-center {
+    text-align: center;
+}
+.text-primario {
+    color: var(--colorPrimario);
+}
+/* Header */
+
+.site-header {
+    background-color: var(--colorPrimario);
+    padding: 2rem;
+}
+
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    
+}
+
+/* Menu principal*/
+
+.menu-principal {
+    display: none;
+}
+@media (min-width: 768px) {
+    .menu-principal{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .menu-principal .menu {
+        display: flex;
+        justify-content: space-around;
+    }
+    .menu-principal li {
+        margin-right: 2rem;
+    }
+    .menu-principal li:last-of-type{
+        margin-right: 0;
+    }
+    .menu-principal a{
+        font-size: 2.6rem;
+        position: relative;
+        z-index: 1;
+    }
+    .menu-principal a::before,
+    .menu-principal a::after{
+        position: absolute;
+        left: 0;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 50%;
+        background-color: var(--colorSextario);
+        z-index: -1;
+        transform: scaleX(0);
+        transition: transform .6s;
+    }
+    .menu-principal a::before{
+        top: 0;
+        transform-origin: left;
+    }
+    .menu-principal a::after{
+        top: 50%;
+        transform-origin: right;
+    }
+    .menu-principal a:hover::before{
+        transform: scaleX(1);
+    }
+    .menu-principal a:hover::after{
+        transform: scaleX(1);
+    }
+}
+.menu-principal a {
+    font-family: var(--fuentePrincipal);
+    color: var(--colorQuintario);
+    font-size: 2.2rem;
+    padding: .5rem 1rem;
+}
+
+.menu-principal .current_page_item {
+    border-bottom: 3px solid var(--colorQuintario);
+}
+
+/* reescribir los estilos del menu movil*/
+@media(min-width: 768px) {
+    .slicknav_menu {
+        display: none;
+    }
+    
+}
+.slicknav_menu{
+    background-color: var(--colorPrimario);
+}
+.slicknav_btn{
+    background-color: var(--colorPrimario);
+}
+.slicknav_nav a{
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+}
+.slicknav_nav a:hover{
+    background: transparent;
+    color: var(--colorQuintario);
+}
+
+/* Footer */
+
+.contenido-footer{
+    padding: 4rem 0;
+}
+
+@media(min-width: 768px){
+    .contenido-footer{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.site-footer .menu-principal{
+    display: block;
+}
+.site-footer a {
+    color: var(--colorTerciario);
+    text-align: center;
+    font-size: 2.4rem;
+}
+.site-footer .menu-principal .current_page_item{
+    border: none;
+}
+.site-footer .menu-principal a::before,
+.site-footer .menu-principal a::after{
+    display: none;
+}
+.copyright{
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+    font-size: 1.8rem;
+    margin: 0;
+}
+@media (min-width: 768px){
+    .copyright{
+        font-size: 2.4rem;
+        margin: 0;
+    }
+}
+
+/* Paginas */
+
+.pagina h1 {
+    margin-bottom: 4rem;
+}
+@media (min-width: 768px){
+.pagina.con-sidebar {
+    display: flex;
+    justify-content: space-between;
+}
+.con-sidebar .contenido-principal {
+    flex: 0 0 calc(65% - 2rem);
+}
+.con-sidebar .sidebar {
+    flex: 0 0 calc(35% - 2rem);
+}
+}
